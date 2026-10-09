@@ -1,0 +1,10 @@
+.env
+.env.*
+.git
+node_modules
+vendor
+public/build
+storage
+bootstrap/cache/*.php
+tests
+README.md

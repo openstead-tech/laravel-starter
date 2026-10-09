@@ -1,0 +1,20 @@
+{
+    admin off
+    auto_https off
+    frankenphp
+}
+
+:{$PORT:8000} {
+    root * /app/public
+    encode zstd gzip
+    php_server
+    log {
+        output stdout
+        format filter {
+            wrap json
+            fields {
+                request>headers>X-Runivo-Acceptance delete
+            }
+        }
+    }
+}
