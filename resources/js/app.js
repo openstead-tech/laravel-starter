@@ -1,1 +1,1 @@
-document.getElementById('asset-status').textContent = 'Vite JavaScript asset loaded.';
+// Add your application’s browser interactions here. Vite bundles this entry point.
