@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:24.14.0-bookworm-slim@sha256:d8e448a56fc63242f70026718378bd4b00f8c82e78d20eefb199224a4d8e33d8 AS assets
+FROM node:24.22.1-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205 AS assets
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
@@ -7,7 +7,7 @@ COPY vite.config.js ./
 COPY resources ./resources
 RUN npm run build
 
-FROM dunglas/frankenphp:1.11.3-php8.4-bookworm@sha256:17ac06e1d710e2bdac9893bd9efb6080b88d055f353bf3353c9503e3a61182df AS app
+FROM dunglas/frankenphp:php8.4-bookworm@sha256:65669c3e1170b92ba51023116d5394ad63478e0ccb4b849c7478640f19641611 AS app
 RUN apt-get update && apt-get install -y --no-install-recommends gosu unzip \
     && rm -rf /var/lib/apt/lists/* \
     && install-php-extensions pdo_mysql mbstring zip opcache
